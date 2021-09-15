@@ -5,6 +5,8 @@ const experience = document.querySelector('.experience');
 const experienceLink = document.querySelector('#experience-link');
 const projectsLink = document.querySelector('#projects-link');
 
+experience.style.display = 'none';
+
 experienceLink.addEventListener('click', e => {
     e.preventDefault();
     projects.style.display = 'none';
