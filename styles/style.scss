@@ -1,0 +1,299 @@
+@import './normalize.css';
+@import './vars.scss';
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: $background-dark;
+}
+  
+*::-webkit-scrollbar {
+    width: 1.2rem;
+    padding-right: 10px;
+}
+  
+*::-webkit-scrollbar-track {
+    background: none;    
+}
+  
+*::-webkit-scrollbar-thumb {
+    background-color: rgba($color: $background-dark, $alpha: .2);
+    opacity: .2;
+    border-radius: 20px;
+    scrollbar-gutter: 10px;
+}
+
+@keyframes changeBg {
+   0%   {background-image: url("../images/webp/background.webp");}
+   25%  {background-image: url("../images/webp/background-1.webp");}
+   50%  {background-image: url("../images/webp/background-2.webp");}
+   75% {background-image: url("../images/webp/background-4.webp");}
+   100% {background-image: url("../images/webp/background.webp");}
+}
+
+html {
+    font-size: 62.5%;
+
+    @media #{$desktop} {
+        font-size: 58%;
+    }
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: $background-darker;
+    background-image: url('../images/webp/background.webp');
+    background-size: cover;
+    background-position: center;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow-y: hidden;
+    animation: changeBg linear 3s infinite;
+   -webkit-animation: changeBg linear 3s infinite;
+
+    @media #{$tablet} {
+        height: fit-content;
+        overflow-y: scroll;
+    }
+}
+
+.app {
+    width: 70%;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+
+    @media #{$tablet} {
+        display: block;
+        width: 90%;
+    }
+    
+    @media #{$desktop} {
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 8.4rem;
+        margin-bottom: 0;
+
+        @media #{$desktop} {
+            font-size: 6.8rem;
+        }
+
+        @media #{$tablet} {
+            font-size: 6.2rem;
+        }
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        font-weight: 200;
+        margin-bottom: 4rem;
+        line-height: 4rem;
+
+        span {
+            cursor: pointer;
+
+            @keyframes rotate-animation {
+                0% { transform: rotate( 0deg) }
+               50% { transform: rotate(180deg) }
+              100% { transform: rotate( 360deg) }
+            }
+
+            &:hover {
+                animation-name: rotate-animation;  /* Refers to the name of your @keyframes element below */
+                animation-duration: 1.5s;        /* Change to speed up or slow down */
+                animation-iteration-count: infinite;  /* Never stop waving :) */
+                display: inline-block;
+            }
+        }
+    }
+
+    .title {
+        margin-top: 30vh;
+        max-width: 78rem;
+        width: 50%;
+        padding-right: 4rem;
+
+        @media #{$desktop} {
+            margin-top: 20vh;
+        }
+
+        @media #{$tablet} {
+            width: 100%;
+            margin-top: 6rem;
+            padding-right: 0;
+        }
+        
+        .buttons {
+            display: flex;
+            align-items: center;
+
+            a {
+                margin-right: 2rem;
+            }
+            
+            .btn {
+                background: #FFF;
+                color: #000;
+                font-size: 2.4rem;
+                padding: 1rem 3rem;
+                border-radius: 2.8rem;
+                font-weight: 300;
+                text-decoration: none;
+                
+                &:hover {
+                    opacity: .6;
+                }
+            }
+            
+            .icon {
+
+                &:hover > svg {
+                    opacity: 1;
+                }
+    
+                svg {
+                    width: 3.5rem;
+                    opacity: .6;
+                }
+
+                path {
+                    fill: #FFF;
+                }
+            }
+        }
+    }
+
+    .content-section {
+        width: 50%;
+        margin-top: 12rem;
+
+        @media #{$tablet} {
+            width: 100%;
+            margin-top: 6rem;
+        }
+
+        .content-menu {
+            font-size: 3.6rem;
+            width: 100%;
+            text-align: right;
+            margin-bottom: 2rem;
+
+            @media #{$tablet} {
+                text-align: left;
+                font-size: 2.8rem;
+            }
+            
+            a {
+                text-decoration: none;
+                color: #FFF;
+                opacity: .6;
+                font-weight: 300;
+                margin-left: 1rem;
+
+                &.active {
+                    opacity: 1;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .content {
+            width: 100%;
+            overflow-y: scroll;
+            padding-right: 1rem;
+            transition: opacity 1s ease;
+            opacity: 0;
+            height: 0;
+
+            @media #{$tablet} {
+                padding-right: none;
+                padding-bottom: 0;
+                height: auto;
+            }
+
+            &.active {
+                opacity: 1;
+                height: -webkit-fill-available;
+                height: fill-available;
+                padding-bottom: 12rem;
+            }
+            
+            .block {
+                background: rgba($color: $background-dark, $alpha: .35);
+                box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.1);
+                max-width: 70rem;
+                padding: 8rem 4rem;
+                border-radius: 1.4rem;
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 3rem;
+
+                @media #{$tablet} {
+                    max-width: 100%;
+                }
+
+                h3 {
+                    font-size: 2.4rem;
+                    margin-top: 0;
+                }
+
+                h4 {
+                    font-size: 2rem;
+                    font-weight: 200;
+                    margin-top: -.75rem;
+                }
+
+                p, ul {
+                    font-size: 2rem;
+                    font-weight: 300;
+                    line-height: 3.25rem;
+                    margin-bottom: 1rem;
+                    opacity: .6;
+                }
+
+                ul {
+                    margin-left: 0;
+                    padding-left: 0;
+                    list-style: none;
+
+                    li {
+                        margin: 1rem 0;
+
+                        &::before {
+                            content: '- ';
+                        }
+                    }
+                    
+                    
+                }
+
+                .tag {
+                    font-size: 1.6rem;
+                    font-weight: 300;
+                    border: .1rem solid #FFF;
+                    border-radius: 2.8rem;
+                    padding: 1rem 2.5rem;
+                    margin-right: 2rem;
+                    display: inline-block;
+                    margin-top: 2rem;
+                    opacity: .6;
+                }
+            }
+        }
+    }
+}
+
