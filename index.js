@@ -26,9 +26,3 @@ projectsLink.addEventListener('click', e => {
     projects.classList.add('active');
     experience.classList.remove('active');
 })
-
-window.addEventListener('resize', (e) => {
-    document.querySelector('.content.active').style.height = '100%'
-    document.querySelector('.content.active').style.height = '-webkit-fill-available'
-    console.log('resize')
-})
